@@ -1,0 +1,32 @@
+name: biotrust
+description: "Entdecken und verwalten Sie Ihre Projekte auf einer interaktiven Karte mit dieser minimalistischen, mobil-optimierten Web-App, die Natur und Technologie elegant verbindet."
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  flutter_map: any
+  latlong2: any
+  shared_preferences: ^2.0.0
+  uuid: ^4.0.0
+  image_picker: '>=1.1.2'
+  supabase_flutter: ^2.8.0
+  geolocator: 13.0.4
+  http: ^1.0.0
+  fl_chart: ^0.68.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

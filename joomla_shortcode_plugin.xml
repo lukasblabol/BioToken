@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="content" version="3.0" method="upgrade">
+    <name>Content - BioToken Shortcode</name>
+    <author>BioToken Team</author>
+    <version>1.0.0</version>
+    <description>Allows you to embed BioToken Flutter app using shortcodes like {biotoken url="..." width="..." height="..."}</description>
+    <files>
+        <filename plugin="biotoken">joomla_shortcode_plugin.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Basic Settings">
+                <field
+                    name="default_url"
+                    type="url"
+                    label="Default BioToken App URL"
+                    description="Default URL to use when no URL is specified in shortcode"
+                    default=""
+                    size="60"
+                />
+                <field
+                    name="default_width"
+                    type="text"
+                    label="Default Width"
+                    description="Default width for embedded apps"
+                    default="100%"
+                    size="20"
+                />
+                <field
+                    name="default_height"
+                    type="text"
+                    label="Default Height"
+                    description="Default height for embedded apps"
+                    default="600px"
+                    size="20"
+                />
+                <field
+                    name="enable_caching"
+                    type="radio"
+                    label="Enable Caching"
+                    description="Cache the generated embed code for better performance"
+                    default="1"
+                    class="btn-group"
+                >
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,47 @@
+  Widget _buildHowItWorksSection(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(AppSpacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+            child: Text(
+              'So funktioniert's',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.lg),
+          _buildProcessStep(
+            context,
+            stepNumber: '01',
+            title: 'Spot claimen',
+            description: 'Zeichne deine Fläche direkt auf der Karte.',
+            icon: Icons.map_outlined,
+            color: AppColors.primary,
+            isFirst: true,
+          ),
+          _buildProcessStep(
+            context,
+            stepNumber: '02',
+            title: 'Scan starten',
+            description: 'KI erkennt Pflanzen & Artenvielfalt.',
+            icon: Icons.camera_alt_outlined,
+            color: AppColors.success,
+          ),
+          _buildProcessStep(
+            context,
+            stepNumber: '03',
+            title: 'Tokens verdienen',
+            description: 'Dokumentiere regelmäßig mit Fotos und verdiene Biotokens für echten Naturschutz.',
+            icon: Icons.toll_outlined,
+            color: AppColors.accent,
+            isLast: true,
+          ),
+        ],
+      ),
+    );
+  }

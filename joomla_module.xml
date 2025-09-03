@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" method="upgrade">
+    <name>BioToken Flutter App</name>
+    <author>BioToken Team</author>
+    <version>1.0.0</version>
+    <description>Embeds the BioToken Flutter application into your Joomla website</description>
+    <files>
+        <filename module="mod_biotoken">joomla_module.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="Basic Settings">
+                <field
+                    name="app_url"
+                    type="url"
+                    label="BioToken App URL"
+                    description="The complete URL to your hosted BioToken Flutter app"
+                    required="true"
+                    default=""
+                    size="60"
+                />
+                <field
+                    name="width"
+                    type="text"
+                    label="Width"
+                    description="Width of the app container (e.g., 100%, 800px)"
+                    default="100%"
+                    size="20"
+                />
+                <field
+                    name="height"
+                    type="text"
+                    label="Height"
+                    description="Height of the app container (e.g., 600px, 80vh)"
+                    default="600px"
+                    size="20"
+                />
+                <field
+                    name="show_loading"
+                    type="radio"
+                    label="Show Loading Indicator"
+                    description="Display a loading spinner while the app loads"
+                    default="1"
+                    class="btn-group"
+                >
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced" label="Advanced">
+                <field
+                    name="moduleclass_sfx"
+                    type="text"
+                    label="Module Class Suffix"
+                    description="A suffix to be applied to the CSS class of the module"
+                    size="30"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

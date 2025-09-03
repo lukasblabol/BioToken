@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioToken App Einbettung - Beispiele</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .example {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        h1, h2 {
+            color: #2d5016;
+        }
+        
+        .app-container {
+            margin: 20px 0;
+            background: white;
+            min-height: 400px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌱 BioToken App Einbettung</h1>
+    
+    <div class="warning">
+        <strong>Wichtig:</strong> Vergessen Sie nicht, die <code>baseUrl</code> in den Beispielen mit Ihrer echten Domain zu ersetzen!
+    </div>
+
+    <h2>📋 Schritt-für-Schritt Anleitung</h2>
+    
+    <h3>1. Skript einbinden</h3>
+    <p>Fügen Sie das BioToken-Skript zu Ihrer Webseite hinzu:</p>
+    <div class="code">
+&lt;script src="https://your-domain.com/path/to/embed_script.js"&gt;&lt;/script&gt;
+    </div>
+
+    <h3>2. Container definieren</h3>
+    <p>Erstellen Sie einen Container für die App:</p>
+    <div class="code">
+&lt;div id="biotoken-app"&gt;&lt;/div&gt;
+    </div>
+
+    <h3>3. App initialisieren</h3>
+    <div class="code">
+&lt;script&gt;
+const biotoken = new BioTokenEmbed({
+    containerId: 'biotoken-app',
+    baseUrl: 'https://your-domain.com/biotoken',
+    width: '100%',
+    height: '600px'
+});
+biotoken.embed();
+&lt;/script&gt;
+    </div>
+
+    <hr>
+
+    <h2>💡 Einbettungs-Beispiele</h2>
+
+    <div class="example">
+        <h3>Beispiel 1: Einfache Einbettung</h3>
+        <p>Die einfachste Art, die BioToken-App einzubetten:</p>
+        
+        <div class="code">
+&lt;!-- HTML --&gt;
+&lt;div id="my-biotoken-app"&gt;&lt;/div&gt;
+
+&lt;script src="embed_script.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const app = new BioTokenEmbed({
+    containerId: 'my-biotoken-app',
+    baseUrl: 'https://your-domain.com/biotoken'
+});
+app.embed();
+&lt;/script&gt;
+        </div>
+        
+        <div id="example1" class="app-container"></div>
+    </div>
+
+    <div class="example">
+        <h3>Beispiel 2: Automatische Einbettung mit Data-Attributen</h3>
+        <p>Noch einfacher - die App wird automatisch geladen:</p>
+        
+        <div class="code">
+&lt;!-- Nur HTML nötig - kein JavaScript! --&gt;
+&lt;div 
+    id="auto-biotoken" 
+    data-biotoken-embed
+    data-biotoken-url="https://your-domain.com/biotoken"
+    data-biotoken-width="100%"
+    data-biotoken-height="500px"
+&gt;&lt;/div&gt;
+
+&lt;script src="embed_script.js"&gt;&lt;/script&gt;
+        </div>
+        
+        <div id="example2" class="app-container"></div>
+    </div>
+
+    <div class="example">
+        <h3>Beispiel 3: Erweiterte Konfiguration</h3>
+        <p>Mit Callbacks und erweiterten Optionen:</p>
+        
+        <div class="code">
+&lt;div id="advanced-biotoken"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const advancedApp = new BioTokenEmbed({
+    containerId: 'advanced-biotoken',
+    baseUrl: 'https://your-domain.com/biotoken',
+    width: '100%',
+    height: '700px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+    
+    // Event-Callbacks
+    onLoad: function(iframe) {
+        console.log('App geladen!', iframe);
+        // Lade-Indikator ausblenden etc.
+    },
+    
+    onError: function(error) {
+        console.error('Fehler:', error);
+        // Fehler-Behandlung
+    },
+    
+    onMessage: function(data) {
+        console.log('Nachricht von App:', data);
+        // Kommunikation mit der App
+    }
+});
+
+advancedApp.embed();
+&lt;/script&gt;
+        </div>
+        
+        <div id="example3" class="app-container"></div>
+    </div>
+
+    <div class="example">
+        <h3>Beispiel 4: Responsive Einbettung</h3>
+        <p>Automatisch anpassend für verschiedene Bildschirmgrößen:</p>
+        
+        <div class="code">
+&lt;div id="responsive-biotoken"&gt;&lt;/div&gt;
+
+&lt;style&gt;
+#responsive-biotoken {
+    width: 100%;
+    height: 80vh;
+    max-height: 800px;
+    min-height: 400px;
+}
+
+@media (max-width: 768px) {
+    #responsive-biotoken {
+        height: 60vh;
+        min-height: 300px;
+    }
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+const responsiveApp = new BioTokenEmbed({
+    containerId: 'responsive-biotoken',
+    baseUrl: 'https://your-domain.com/biotoken',
+    width: '100%',
+    height: '100%'
+});
+responsiveApp.embed();
+&lt;/script&gt;
+        </div>
+        
+        <div id="example4" class="app-container"></div>
+    </div>
+
+    <h2>⚙️ Konfigurationsoptionen</h2>
+    
+    <div class="code">
+const options = {
+    // Basis-Konfiguration
+    containerId: 'biotoken-app',           // ID des Container-Elements
+    baseUrl: 'https://your-domain.com',    // URL Ihrer gehosteten App
+    width: '100%',                         // Breite (CSS-Wert)
+    height: '600px',                       // Höhe (CSS-Wert)
+    
+    // Styling
+    showBorder: true,                      // Rahmen anzeigen
+    borderRadius: '8px',                   // Rahmenradius
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)', // Schatten
+    backgroundColor: '#ffffff',            // Hintergrundfarbe
+    
+    // iFrame-Einstellungen
+    allowFullscreen: true,                 // Vollbild erlauben
+    sandbox: 'allow-scripts allow-same-origin allow-popups allow-forms',
+    loading: 'lazy',                       // Lazy Loading
+    
+    // Event-Callbacks
+    onLoad: function(iframe) { },          // App geladen
+    onError: function(error) { },          // Fehler aufgetreten
+    onMessage: function(data) { }          // Nachricht empfangen
+};
+    </div>
+
+    <h2>🚀 Deployment-Checklist</h2>
+    
+    <ol>
+        <li><strong>Flutter-App builden:</strong> <code>flutter build web</code></li>
+        <li><strong>Web-Dateien hochladen:</strong> Inhalt des <code>build/web</code> Ordners auf Ihren Server</li>
+        <li><strong>embed_script.js hochladen:</strong> Das Einbettungsskript verfügbar machen</li>
+        <li><strong>baseUrl anpassen:</strong> In allen Beispielen die echte URL einsetzen</li>
+        <li><strong>CORS konfigurieren:</strong> Falls nötig, CORS-Headers für Ihre Domain setzen</li>
+        <li><strong>HTTPS verwenden:</strong> Für Geolocation und andere Features erforderlich</li>
+    </ol>
+
+    <div class="warning">
+        <strong>Tipp:</strong> Testen Sie die Einbettung zuerst lokal mit einem lokalen Server, bevor Sie sie online stellen.
+    </div>
+
+    <script src="embed_script.js"></script>
+    <script>
+        // Simulation der Beispiele (nur für diese Demo-Seite)
+        // In der echten Implementierung würden hier die echten Apps geladen
+        
+        function createDemoContent(containerId, title) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = `
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 200px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border-radius: 8px;
+                        font-size: 18px;
+                        font-weight: bold;
+                    ">
+                        🌱 ${title}
+                        <br><small style="font-size: 14px; font-weight: normal; opacity: 0.8;">
+                            (Demo - Echte App würde hier geladen)
+                        </small>
+                    </div>
+                `;
+            }
+        }
+        
+        // Demo-Inhalte erstellen
+        createDemoContent('example1', 'BioToken App - Beispiel 1');
+        createDemoContent('example2', 'BioToken App - Beispiel 2');
+        createDemoContent('example3', 'BioToken App - Beispiel 3');
+        createDemoContent('example4', 'BioToken App - Beispiel 4');
+    </script>
+</body>
+</html>
